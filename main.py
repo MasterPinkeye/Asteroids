@@ -37,6 +37,12 @@ def main():
                 log_event("player_hit")
                 print("Game over!")
                 sys.exit()
+        for ast in asteroids:
+            for shot in shots:
+                if shot.collides_with(ast):
+                    log_event("asteroid_shot")
+                    shot.kill()
+                    ast.split()
         pygame.display.flip()
         dt = clock.tick(60) / 1000
     print(f"Starting Asteroids with pygame version: {pygame.version.ver}")
